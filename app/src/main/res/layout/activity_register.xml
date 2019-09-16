@@ -45,11 +45,11 @@
 
 
                 <TextView
-                    android:labelFor="@id/text_email"
-                    android:text="email"
-                    android:fontFamily="sans-serif-light"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:labelFor="@id/text_email"
+                    android:text="Email" />
 
                 <EditText
                     android:id="@+id/text_email"
@@ -63,21 +63,21 @@
                     android:inputType="textEmailAddress"/>
 
                 <TextView
-                    android:labelFor="@id/edit_text_password"
-                    android:text="password"
-                    android:fontFamily="sans-serif-light"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:labelFor="@id/edit_text_password"
+                    android:text="Password" />
 
                 <EditText
-                    android:drawablePadding="10dp"
+                    android:id="@+id/edit_text_password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:id="@+id/edit_text_password"
                     android:drawableLeft="@drawable/ic_lock"
-                    android:hint="Password"
-                    android:inputType="textPassword"/>
+                    android:drawablePadding="10dp"
+                    android:hint="password"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
 
 
                 <Button
