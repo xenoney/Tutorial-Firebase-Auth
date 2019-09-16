@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import kotlinx.android.synthetic.main.activity_register.*
 import com.google.firebase.auth.FirebaseAuth
 
@@ -49,14 +50,12 @@ class RegisterActivity : AppCompatActivity() {
         }
 
     private fun registerUser(email: String, password: String) {
+        progressbar.visibility = View.VISIBLE
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+            progressbar.visibility = View.INVISIBLE
             if(task.isSuccessful) {
-                val intent = Intent(this@RegisterActivity, HomeActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-
-                startActivity(intent)
+                login()
             }
             else{
                 task.exception?.message?.let{
@@ -64,6 +63,13 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
+    override fun onStart() {
+        super.onStart()
+
+        mAuth.currentUser?.let {
+            login()
+        }
     }
 }
